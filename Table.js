@@ -14,10 +14,9 @@ const Table1 = () => {
     )
 }
 
-const Table3 = ({props}) => {
-    console.log(props);
-    console.log(props.meetings);
-    const rows = props.meetings.map((row, index) => {
+const Table3 = ({props}) => (
+    <tbody>{props.meetings.map((row, index) => {
+        console.log(props);
         return (
             <tr key={row._id}>
                 <td>{row.start_hour}</td>
@@ -26,16 +25,13 @@ const Table3 = ({props}) => {
                 <td>{row.link}</td>
             </tr>
         )
-    })
-    return <tbody>
-                <div action="{{url_for('delete', _id=meeting['_id'])}}" method="post" >
-                    <input type="submit" value="Delete" class="btn btn-danger"/>
-                </div>
-            </tbody>
-}
+    })}
+    </tbody>
+)
 
 class Table extends Component {
-    render(props) {
+
+    render() {
         const {resultData} = this.props;
         console.log(JSON.stringify(this.props.resultData));
         return (
@@ -43,7 +39,7 @@ class Table extends Component {
                 <h1>Meetings : </h1><br></br>
                 <table>
                     <Table1/>
-                    <Table3 props={resultData} />
+                    <Table3 props={this.meetings} />
            </table>
             </body>
         )
