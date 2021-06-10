@@ -49,6 +49,8 @@ class Formu extends Component {
         <div>
           <h1>Meetings : </h1>
           
+          <form method="POST">
+
           <div>
             <label htmlFor="name">Name </label>
             <input type="text" value={this.state.name} onChange={this.handleChange} id="name" name="Name"/><br></br><br></br>
@@ -73,8 +75,10 @@ class Formu extends Component {
             <label htmlFor="link">Link </label>
             <input type="text" value={this.state.link} onChange={this.handleChange} id="link" name="Link"/><br></br><br></br>
           </div>
+          
+          </form>
 
-          <div>
+          <div action="{{url_for('get_all_meetings')}}" method="get">
             <input type="submit" value="save" />
           </div>
           
